@@ -12,6 +12,9 @@ each example is in its own directory containing its own README.md file .
     we just need (prefix) or (postfix) info because
     (infix) = ascending order of (prefix) or (postfix).
 
+    also, displays the tree in the following forms:
+    prefix, infix, postfix, dict of adjacency sets
+
 -   earthquake:
 
     code for finding out the earthquake with maximum magnitude given the

@@ -16,6 +16,10 @@
     bst_tree_1(prefix)              # build binary search tree given prefix
     bst_tree_2(postfix)             # build binary search tree given postfix
 
+    get_directed_tree(self, root)   # returns dict of adjacency sets
+                                    # for a directed tree given the root
+
+
 '''
 
 class Node: 
@@ -86,6 +90,39 @@ class Node:
             res += [root.val]
         return(res)
 
+    def get_directed_tree(self, root):
+
+        from collections import defaultdict
+
+        T = defaultdict(set)
+        d = {}
+
+        i = 0
+        d[i] = [root]
+        # print(root.val)
+        Q = d[i]
+
+        while Q:
+            tmp = []
+            for u in Q:
+                if u.left:
+                    tmp.append(u.left)
+                    T[u.val].add(u.left.val)
+                if u.right:
+                    tmp.append(u.right)
+                    T[u.val].add(u.right.val)
+            if tmp:
+                i += 1
+                d[i] = tmp
+                Q = d[i]
+            else:
+                Q = None
+        return(T)
+
+
+
+
+
 if __name__ == '__main__':
 
     '''
@@ -116,5 +153,11 @@ if __name__ == '__main__':
     print('pre_order traversal:  {}'.format(x.pre_order(root)))
     print('in_order traversal:   {}'.format(x.in_order(root)))
     print('post_order traversal: {}'.format(x.post_order(root)))
+
     print('')
+    directed_tree = x.get_directed_tree(root)
+    print('directed tree (dict of adjacency sets): {}'.format(directed_tree))
+
+
+
 

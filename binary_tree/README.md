@@ -18,3 +18,8 @@
     bst_tree_2(postfix)             # build binary search tree given postfix
 
 '''
+
+-   added method:
+    get_directed_tree(self, root)   # returns dict of adjacency sets
+                                    # for a directed tree given the root
+
